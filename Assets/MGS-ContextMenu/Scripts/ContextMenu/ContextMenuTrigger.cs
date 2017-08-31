@@ -52,7 +52,7 @@ namespace Developer.ContextMenu
         protected virtual void Start()
         {
             rayCamera = GetComponent<Camera>();
-        }//Start()_end
+        }
 
         protected virtual void Update()
         {
@@ -73,7 +73,7 @@ namespace Developer.ContextMenu
                     }
                 }
             }
-        }//Update()_end
+        }
 
         /// <summary>
         /// Close current ContextMenuUI.
@@ -85,7 +85,7 @@ namespace Developer.ContextMenu
                 current.menuUI.Close();
                 current = null;
             }
-        }//CloseC...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

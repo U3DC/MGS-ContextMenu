@@ -47,7 +47,7 @@ namespace Developer.ContextMenu
                     transform.eulerAngles -= rotationSnap;
                     break;
             }
-        }//OnM...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

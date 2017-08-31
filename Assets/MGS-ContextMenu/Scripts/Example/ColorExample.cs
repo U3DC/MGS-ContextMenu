@@ -33,7 +33,7 @@ namespace Developer.ContextMenu
         public override void OnMenuItemClick(int itemIndex)
         {
             GetComponent<Renderer>().material.color = colors[itemIndex];
-        }//OnM...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

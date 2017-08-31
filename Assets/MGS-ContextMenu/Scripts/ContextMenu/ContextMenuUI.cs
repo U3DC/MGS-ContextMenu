@@ -41,7 +41,7 @@ namespace Developer.ContextMenu
         protected virtual void Reset()
         {
             bgRect = GetComponent<RectTransform>();
-        }//Reset()_end
+        }
         #endregion
 
         #region Public Method
@@ -60,7 +60,7 @@ namespace Developer.ContextMenu
 
             //Axtive ContextMenu UI.
             gameObject.SetActive(true);
-        }//Show()_end
+        }
 
         /// <summary>
         /// Close ContextMenu UI.
@@ -68,7 +68,7 @@ namespace Developer.ContextMenu
         public virtual void Close()
         {
             gameObject.SetActive(false);
-        }//Close()_end
+        }
 
         /// <summary>
         /// Menu item click.
@@ -78,7 +78,7 @@ namespace Developer.ContextMenu
         {
             agent.OnMenuItemClick(itemIndex);
             Close();
-        }//MenuI...()_end
+        }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

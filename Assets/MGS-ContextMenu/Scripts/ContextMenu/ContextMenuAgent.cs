@@ -35,7 +35,7 @@ namespace Developer.ContextMenu
         protected virtual void Reset()
         {
             menuUI = FindObjectOfType<ContextMenuUI>();
-        }//Reset()_end
+        }
         #endregion
 
         #region Public Method
@@ -45,5 +45,5 @@ namespace Developer.ContextMenu
         /// <param name="itemIndex">Index of menu item.</param>
         public abstract void OnMenuItemClick(int itemIndex);
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}
