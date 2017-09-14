@@ -31,13 +31,6 @@ namespace Developer.ContextMenu
         public ContextMenuUI menuUI;
         #endregion
 
-        #region Protected Method
-        protected virtual void Reset()
-        {
-            menuUI = FindObjectOfType<ContextMenuUI>();
-        }
-        #endregion
-
         #region Public Method
         /// <summary>
         /// ContextMenuUI menu item click.

@@ -51,15 +51,15 @@ namespace Developer.ContextMenu
         /// <param name="pointerPos">Mouse pointer screen position.</param>
         public virtual void Show(Vector2 pointerPos)
         {
+            //Axtive ContextMenu UI.
+            gameObject.SetActive(true);
+
             //Calculate position of ContextMenu UI.
             var halfWidth = bgRect.rect.width * 0.5f;
             var halfHeight = bgRect.rect.height * 0.5f;
             var newX = pointerPos.x < Screen.width - bgRect.rect.width ? pointerPos.x + halfWidth : Screen.width - halfWidth;
             var newY = pointerPos.y < bgRect.rect.height ? pointerPos.y + halfHeight : pointerPos.y - halfHeight;
             transform.position = new Vector2(newX, newY);
-
-            //Axtive ContextMenu UI.
-            gameObject.SetActive(true);
         }
 
         /// <summary>

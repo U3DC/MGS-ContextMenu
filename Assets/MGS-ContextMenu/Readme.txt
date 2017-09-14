@@ -3,7 +3,7 @@
   Name: MGS-ContextMenu
   Author: Mogoson   Version: 1.0   Date: 6/16/2017
 ==========================================================================
-  [Summeray]
+  [Summary]
     This package can be used to make context menu UI in Unity3D scene.
 --------------------------------------------------------------------------
   [Environment]
@@ -15,6 +15,9 @@
     Use the compnent scripts in your project.
     Override the function OnMenuItemClick of ContextMenuAgent class to
     do some thing you want, just like TransformExample and ColorExample.
+--------------------------------------------------------------------------
+  [Resource]
+    https://github.com/mogoson/MGS-ContextMenu
 --------------------------------------------------------------------------
   [Contact]
     If you have any questions, feel free to contact me at mogoson@qq.com.
