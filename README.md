@@ -1,10 +1,14 @@
 # MGS-ContextMenu
 
+## Environment
+- Unity 5.0 or above.
+- .Net Framework 3.0 or above.
+
 ## Summary
-Unity plugin for make context menu UI in scene.
+- Unity plugin for make context menu UI in scene.
 
 ## Demand
-In Unity scene, show context menu when mouse right button click on the target gameobject and click the menu item to do something.
+- In Unity scene, show context menu when mouse right button click on the target gameobject and click the menu item to do something.
 
 ## Achieve
 - ContextMenuUI.cs : Manage the context menu UI(UGUI).
@@ -14,3 +18,6 @@ In Unity scene, show context menu when mouse right button click on the target ga
 
 ## Demo
 - Demos in the path “MGS-ContextMenu\Scenes” provide reference to you.
+
+## Contact
+- If you have any questions, feel free to contact me at mogoson@qq.com.
