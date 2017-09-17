@@ -1,5 +1,5 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
  *  FileName: ContextMenuTrigger.cs
  *  Author: Mogoson   Version: 1.0   Date: 6/14/2017
  *  Version Description:
