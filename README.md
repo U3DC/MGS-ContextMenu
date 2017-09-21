@@ -1,4 +1,5 @@
 # MGS-ContextMenu
+- [中文手册](./README_ZH.md)
 
 ## Summary
 - Unity plugin for make context menu UI in scene.
@@ -18,6 +19,11 @@
 
 ## Demo
 - Demos in the path “MGS-ContextMenu\Scenes” provide reference to you.
+
+## Preview
+- ContextMenu_Color
+
+![ContextMenu_Color](./Attachments/ContextMenu_Color.png)
 
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@qq.com.
