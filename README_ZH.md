@@ -1,4 +1,5 @@
 ﻿# MGS-ContextMenu
+ - [English Manual](./README.md)
 
 ## 概述
 - Unity 制作UGUI上下文菜单 插件包。
@@ -21,7 +22,9 @@
 - “MGS-ContextMenu\Scenes”目录下存放上述功能的演示案例，供读者参考。
 
 ## 图示
-### ContextMenu_Color
+- ContextMenu_Color
+
+![ContextMenu_Color](./Attachments/ContextMenu_Color.png)
 
 ## 联系
 - 如果你有任何疑问或者建议，欢迎通过mogoson@qq.com联系我。
