@@ -1,7 +1,7 @@
 ==========================================================================
   Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
   Name: MGS-ContextMenu
-  Author: Mogoson   Version: 1.0   Date: 6/16/2017
+  Author: Mogoson   Version: 0.1.0   Date: 6/16/2017
 ==========================================================================
   [Summary]
     Unity plugin for make context menu UI in scene.
