@@ -27,4 +27,4 @@
 ![ContextMenu_Color](./Attachments/ContextMenu_Color.png)
 
 ## 联系
-- 如果你有任何疑问或者建议，欢迎通过mogoson@qq.com联系我。
+- 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
