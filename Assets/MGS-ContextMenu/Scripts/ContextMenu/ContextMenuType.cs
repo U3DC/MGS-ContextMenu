@@ -1,6 +1,6 @@
 /*************************************************************************
  *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
- *  FileName: ContextMenuAgent.cs
+ *  FileName: ContextMenuType.cs
  *  Author: Mogoson   Version: 0.1.0   Date: 6/14/2017
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
@@ -8,7 +8,7 @@
  *    Ignore.
  *  Class List:
  *    <ID>           <name>             <description>
- *     1.       ContextMenuAgent           Ignore.
+ *     1.
  *  Function List:
  *    <class ID>     <name>             <description>
  *     1.
@@ -17,26 +17,12 @@
  *     1.     Mogoson     6/14/2017       0.1.0        Create this file.
  *************************************************************************/
 
-using UnityEngine;
-
 namespace Developer.ContextMenu
 {
-    [RequireComponent(typeof(Collider))]
-    public abstract class ContextMenuAgent : MonoBehaviour
+    public enum ContextMenuType
     {
-        #region Property and Field
-        /// <summary>
-        /// ContextMenuType of agent.
-        /// </summary>
-        public ContextMenuType menuType = ContextMenuType.Untyped;
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Event on ContextMenu item click.
-        /// </summary>
-        /// <param name="itemIndex">Index of menu item.</param>
-        public abstract void OnMenuItemClick(int itemIndex);
-        #endregion
+        Untyped,
+        ColorMenu,
+        TransformMenu
     }
 }

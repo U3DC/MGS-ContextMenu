@@ -17,30 +17,50 @@
  *     1.     Mogoson     6/14/2017       0.1.0        Create this file.
  *************************************************************************/
 
+using UnityEngine;
+
 namespace Developer.ContextMenu
 {
-    using UnityEngine;
-
     [RequireComponent(typeof(RectTransform))]
     [AddComponentMenu("Developer/ContextMenu/ContextMenuUI")]
     public class ContextMenuUI : MonoBehaviour
     {
         #region Property and Field
         /// <summary>
-        /// Background RectTransform of ContextMenu UI.
+        /// Type of ContextMenu UI.
         /// </summary>
-        public RectTransform bgRect;
+        public ContextMenuType menuType = ContextMenuType.Untyped;
 
         /// <summary>
-        /// ContextMenuAgent of ContextMenu UI.
+        /// Agent of ContextMenu UI.
         /// </summary>
-        public ContextMenuAgent agent { set; get; }
+        public ContextMenuAgent menuAgent { set; get; }
+
+        /// <summary>
+        /// Root RectTransform of ContextMenu UI.
+        /// </summary>
+        protected RectTransform rootRect;
         #endregion
 
         #region Protected Method
-        protected virtual void Reset()
+        protected virtual void Awake()
         {
-            bgRect = GetComponent<RectTransform>();
+            rootRect = GetComponent<RectTransform>();
+        }
+
+        /// <summary>
+        /// Get screen position of Menu UI base on pointer position.
+        /// </summary>
+        /// <param name="pointerPos">Mouse pointer screen position.</param>
+        /// <returns>Screen position of Menu UI.</returns>
+        protected virtual Vector2 GetMenuUIPosition(Vector2 pointerPos)
+        {
+            //Calculate position of ContextMenu UI.
+            var halfWidth = rootRect.rect.width * 0.5f;
+            var halfHeight = rootRect.rect.height * 0.5f;
+            var newX = pointerPos.x < Screen.width - rootRect.rect.width ? pointerPos.x + halfWidth : Screen.width - halfWidth;
+            var newY = pointerPos.y < rootRect.rect.height ? pointerPos.y + halfHeight : pointerPos.y - halfHeight;
+            return new Vector2(newX, newY);
         }
         #endregion
 
@@ -54,12 +74,8 @@ namespace Developer.ContextMenu
             //Axtive ContextMenu UI.
             gameObject.SetActive(true);
 
-            //Calculate position of ContextMenu UI.
-            var halfWidth = bgRect.rect.width * 0.5f;
-            var halfHeight = bgRect.rect.height * 0.5f;
-            var newX = pointerPos.x < Screen.width - bgRect.rect.width ? pointerPos.x + halfWidth : Screen.width - halfWidth;
-            var newY = pointerPos.y < bgRect.rect.height ? pointerPos.y + halfHeight : pointerPos.y - halfHeight;
-            transform.position = new Vector2(newX, newY);
+            //Update Menu UI position.
+            transform.position = GetMenuUIPosition(pointerPos);
         }
 
         /// <summary>
@@ -76,7 +92,7 @@ namespace Developer.ContextMenu
         /// <param name="itemIndex">Index of menu item.</param>
         public virtual void MenuItemClick(int itemIndex)
         {
-            agent.OnMenuItemClick(itemIndex);
+            menuAgent.OnMenuItemClick(itemIndex);
             Close();
         }
         #endregion

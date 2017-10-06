@@ -17,11 +17,12 @@
  *     1.     Mogoson     6/14/2017       0.1.0       Create this file.
  *************************************************************************/
 
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
 namespace Developer.ContextMenu
 {
-    using UnityEngine;
-    using UnityEngine.EventSystems;
-
     [RequireComponent(typeof(Camera))]
     [AddComponentMenu("Developer/ContextMenu/ContextMenuTrigger")]
     public class ContextMenuTrigger : MonoBehaviour
@@ -38,9 +39,14 @@ namespace Developer.ContextMenu
         public float maxDistance = 100;
 
         /// <summary>
-        /// Current ContextMenuAgent of trigger.
+        /// List of ContextMenuUI.
         /// </summary>
-        public ContextMenuAgent current { protected set; get; }
+        public List<ContextMenuUI> menuUIList = new List<ContextMenuUI>();
+
+        /// <summary>
+        /// Current ContextMenuUI of trigger.
+        /// </summary>
+        protected ContextMenuUI currentMenuUI;
 
         /// <summary>
         /// Camera to ray.
@@ -57,19 +63,23 @@ namespace Developer.ContextMenu
         protected virtual void Update()
         {
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-                CloseCurrent();
+                CloseCurrentMenuUI();
             else if (Input.GetMouseButtonDown(1))
             {
-                CloseCurrent();
+                CloseCurrentMenuUI();
                 var ray = rayCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hitInfo;
                 if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
                 {
-                    current = hitInfo.transform.GetComponent<ContextMenuAgent>();
-                    if (current)
+                    var menuAgent = hitInfo.transform.GetComponent<ContextMenuAgent>();
+                    if (menuAgent)
                     {
-                        current.menuUI.agent = current;
-                        current.menuUI.Show(Input.mousePosition);
+                        currentMenuUI = GetContextMenuUI(menuAgent.menuType);
+                        if (currentMenuUI)
+                        {
+                            currentMenuUI.menuAgent = menuAgent;
+                            currentMenuUI.Show(Input.mousePosition);
+                        }
                     }
                 }
             }
@@ -78,13 +88,30 @@ namespace Developer.ContextMenu
         /// <summary>
         /// Close current ContextMenuUI.
         /// </summary>
-        protected void CloseCurrent()
+        protected void CloseCurrentMenuUI()
         {
-            if (current)
+            if (currentMenuUI)
             {
-                current.menuUI.Close();
-                current = null;
+                currentMenuUI.Close();
+                currentMenuUI = null;
             }
+        }
+
+        /// <summary>
+        /// Get ContextMenuUI from menuUIList by menuType.
+        /// </summary>
+        /// <param name="menuType">Type of ContextMenuUI.</param>
+        /// <returns>Target ContextMenuUI.</returns>
+        protected ContextMenuUI GetContextMenuUI(ContextMenuType menuType)
+        {
+            foreach (var menuUI in menuUIList)
+            {
+                if (menuUI.menuType == menuType)
+                    return menuUI;
+            }
+
+            Debug.LogWarning("Can not fined the ContextMenuUI. ContextMenuType is : " + menuType);
+            return null;
         }
         #endregion
     }

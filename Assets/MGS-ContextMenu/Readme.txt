@@ -15,6 +15,8 @@
     .Net Framework 3.0 or above.
 --------------------------------------------------------------------------
   [Achieve]
+    ContextMenuType : Type to classify ContextMenu.
+
     ContextMenuUI : Manage the context menu UI(UGUI).
 
     ContextMenuTrigger : Trigger of context menu, show context menu
@@ -24,23 +26,23 @@
     context menu item is clicked.
 
     In fact, this plugin just build a frame of context menu, you need
-    write the component script, extend the ContextMenuAgent class and
-    achieve the OnMenuItemClick method to something that you wan, and
-    attach it to the target gameobject. just like the TransformExample
-    and the ColorExample component.
+    write your component script, inherit the ContextMenuAgent class
+    and achieve the OnMenuItemClick method to something that you want
+    and attach it to the target gameobject. just like the
+    ContextMenuAgentExample component.
 --------------------------------------------------------------------------
   [Usage]
-    Attach the ContextMenuTrigger to the main camera of your scene.
+    Attach the ContextMenuUI to the context menu UI root. you can make
+    multi context menu UI.
 
-    Attach the ContextMenuUI to the context menu UI root, in fact, you
-    can make multi context menu UI.
+    Attach the ContextMenuTrigger to the main camera of your scene and
+    add ContextMenuUI to the "Menu UI List".
 
-    Create your script component, extend the ContextMenuAgent class and
-    achieve the OnMenuItemClick method to something that you wan, just
-    like the TransformExample component.
+    Create your script component, inherit the ContextMenuAgent class
+    and achieve the OnMenuItemClick method to something that you want.
+    just like the ContextMenuAgentExample component.
 
-    Require the Collider component is attached to the target gameobject
-    and attach your script component.
+    Attach your script component to the target gameobject.
 --------------------------------------------------------------------------
   [Demo]
     Demos in the path "MGS-ContextMenu\Scenes" provide reference to you.
