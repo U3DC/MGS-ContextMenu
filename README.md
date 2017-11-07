@@ -6,7 +6,7 @@
 
 ## Demand
 - In Unity scene, show context menu when mouse right button click on
-the target gameobject and click the menu item to do something.
+  the target gameobject and click the menu item to do something.
 
 ## Environment
 - Unity 5.0 or above.
@@ -16,15 +16,15 @@ the target gameobject and click the menu item to do something.
 - ContextMenuType : Type to classify ContextMenu.
 - ContextMenuUI : Manage the context menu UI(UGUI).
 - ContextMenuTrigger : Trigger of context menu, show context menu on
-mouse right button click on the target
-gameobject.
+  mouse right button click on the target
+  gameobject.
 - ContextMenuAgent : Agent of context menu, achieve the actions of
-context menu item is clicked.
+  context menu item is clicked.
 - In fact, this plugin just build a frame
-of context menu, you need write your component script, inherit the
-ContextMenuAgent class and achieve the OnMenuItemClick method to
-something that you want, and attach it to the target gameobject. just
-like the ContextMenuAgentExample component.
+  of context menu, you need write your component script, inherit the
+  ContextMenuAgent class and achieve the OnMenuItemClick method to
+  something that you want, and attach it to the target gameobject. just
+  like the ContextMenuAgentExample component.
 
 ## Demo
 - Demos in the path "MGS-ContextMenu\Scenes" provide reference to you.
@@ -32,7 +32,7 @@ like the ContextMenuAgentExample component.
 ## Preview
 - ContextMenuExample
 
-![ContextMenuExample](./Attachments/ContextMenuExample.gif)
+![ContextMenuExample](./Attachments/README_Image/ContextMenuExample.gif)
 
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@qq.com.

@@ -18,16 +18,16 @@
 - ContextMenuAgent：上下文菜单代理，实现菜单项被点击时需要执行的操作。
 
 - 实际上是搭建了一个右键上下文菜单的简易框架，读者需要自己编写代码组件，通过继承ContextMenuAgent
-类并具体实现其OnMenuItemClick方法来实现菜单项被点击时需要执行的操作，并将代码组件挂载到目标物体。
-例如演示案例中的ContextMenuAgentExample组件。
+  类并具体实现其OnMenuItemClick方法来实现菜单项被点击时需要执行的操作，并将代码组件挂载到目标物体。
+  例如演示案例中的ContextMenuAgentExample组件。
 
 ## 案例
 - “MGS-ContextMenu\Scenes”目录下存放上述功能的演示案例，供读者参考。
 
-## 图示
+## 预览
 - ContextMenuExample
 
-![ContextMenuExample](./Attachments/ContextMenuExample.gif)
+![ContextMenuExample](./Attachments/README_Image/ContextMenuExample.gif)
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
