@@ -17,7 +17,7 @@ namespace Developer.ContextMenu
     [AddComponentMenu("Developer/ContextMenu/ContextMenuAgentExample")]
     public class ContextMenuAgentExample : ContextMenuAgent
     {
-        #region Property and Field
+        #region Field and Property
         public Vector3 positionSnap = new Vector3(1, 0, 0);
         public Vector3 rotationSnap = new Vector3(0, 0, 30);
         public Color[] colors = new Color[] { Color.red, Color.blue, Color.green };

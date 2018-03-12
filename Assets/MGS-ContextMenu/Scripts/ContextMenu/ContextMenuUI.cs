@@ -23,7 +23,7 @@ namespace Developer.ContextMenu
     [AddComponentMenu("Developer/ContextMenu/ContextMenuUI")]
     public class ContextMenuUI : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Type of context menu.
         /// </summary>

@@ -17,7 +17,7 @@ namespace Developer.ContextMenu
     [RequireComponent(typeof(Collider))]
     public abstract class ContextMenuAgent : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Type of target context menu.
         /// </summary>

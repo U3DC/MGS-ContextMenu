@@ -20,7 +20,7 @@ namespace Developer.ContextMenu
     [AddComponentMenu("Developer/ContextMenu/ContextMenuTrigger")]
     public class ContextMenuTrigger : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Layer of ray.
         /// </summary>
