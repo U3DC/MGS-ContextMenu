@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuAgentExample.cs
- *  Description  :  Example of context menu UI agent.
+ *  Description  :  Example of context menu agent.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/15/2017
+ *  Date         :  3/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 

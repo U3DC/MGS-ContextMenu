@@ -1,21 +1,26 @@
-/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuType.cs
- *  Description  :  Define the type of ContextMenuUI.
+ *  Description  :  Define type of context menu.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/14/2017
+ *  Date         :  3/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
 namespace Developer.ContextMenu
 {
+    /// <summary>
+    /// Type of context menu.
+    /// </summary>
     public enum ContextMenuType
     {
-        Untyped,
-        ColorMenu,
-        TransformMenu
+        Undefined = 0,
+
+        //Demo types
+        ColorMenu = 1,
+        TransformMenu = 2
     }
 }

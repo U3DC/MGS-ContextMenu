@@ -1,12 +1,12 @@
 ﻿/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuTrigger.cs
- *  Description  :  Trigger for ContextMenuUI.
+ *  Description  :  Trigger of context menu.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/14/2017
+ *  Date         :  3/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -32,14 +32,14 @@ namespace Developer.ContextMenu
         public float maxDistance = 100;
 
         /// <summary>
-        /// List of ContextMenuUI.
+        /// List of context menu.
         /// </summary>
-        public List<ContextMenuUI> menuUIList = new List<ContextMenuUI>();
+        public List<ContextMenuUI> menuList = new List<ContextMenuUI>();
 
         /// <summary>
-        /// Current ContextMenuUI of trigger.
+        /// Current context menu of trigger.
         /// </summary>
-        protected ContextMenuUI currentMenuUI;
+        protected ContextMenuUI currentMenu;
 
         /// <summary>
         /// Camera to ray.
@@ -56,54 +56,53 @@ namespace Developer.ContextMenu
         protected virtual void Update()
         {
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-                CloseCurrentMenuUI();
-            else if (Input.GetMouseButtonDown(1))
+                CloseCurrentMenu();
+
+            if (Input.GetMouseButtonDown(1))
             {
-                CloseCurrentMenuUI();
+                CloseCurrentMenu();
+
                 var ray = rayCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hitInfo;
+                var hitInfo = new RaycastHit();
                 if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
                 {
                     var menuAgent = hitInfo.transform.GetComponent<ContextMenuAgent>();
                     if (menuAgent)
                     {
-                        currentMenuUI = GetContextMenuUI(menuAgent.menuType);
-                        if (currentMenuUI)
-                        {
-                            currentMenuUI.menuAgent = menuAgent;
-                            currentMenuUI.Show(Input.mousePosition);
-                        }
+                        currentMenu = FindContextMenu(menuAgent.menuType);
+                        if (currentMenu)
+                            currentMenu.Show(menuAgent, Input.mousePosition);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Close current ContextMenuUI.
+        /// Close current context menu.
         /// </summary>
-        protected void CloseCurrentMenuUI()
+        protected void CloseCurrentMenu()
         {
-            if (currentMenuUI)
+            if (currentMenu)
             {
-                currentMenuUI.Close();
-                currentMenuUI = null;
+                currentMenu.Close();
+                currentMenu = null;
             }
         }
 
         /// <summary>
-        /// Get ContextMenuUI from menuUIList by menuType.
+        /// Find context menu from menuList by menu type.
         /// </summary>
-        /// <param name="menuType">Type of ContextMenuUI.</param>
-        /// <returns>Target ContextMenuUI.</returns>
-        protected ContextMenuUI GetContextMenuUI(ContextMenuType menuType)
+        /// <param name="menuType">Type of target context menu.</param>
+        /// <returns>Context menu found.</returns>
+        protected ContextMenuUI FindContextMenu(ContextMenuType menuType)
         {
-            foreach (var menuUI in menuUIList)
+            foreach (var menu in menuList)
             {
-                if (menuUI.menuType == menuType)
-                    return menuUI;
+                if (menu.type == menuType)
+                    return menu;
             }
 
-            Debug.LogWarning("Can not fined the ContextMenuUI. ContextMenuType is : " + menuType);
+            Debug.LogWarningFormat("Find context menu UI is failed : The context menu that type is {0} does not exist.", menuType);
             return null;
         }
         #endregion

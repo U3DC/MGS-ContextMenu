@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuAgent.cs
- *  Description  :  Define agent for ContextMenuUI component.
+ *  Description  :  Define agent for context menu.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  6/14/2017
+ *  Date         :  3/12/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -19,14 +19,14 @@ namespace Developer.ContextMenu
     {
         #region Property and Field
         /// <summary>
-        /// ContextMenuType of agent.
+        /// Type of target context menu.
         /// </summary>
-        public ContextMenuType menuType = ContextMenuType.Untyped;
+        public ContextMenuType menuType = ContextMenuType.Undefined;
         #endregion
 
         #region Public Method
         /// <summary>
-        /// Event on ContextMenu item click.
+        /// Event on context menu item click.
         /// </summary>
         /// <param name="itemIndex">Index of menu item.</param>
         public abstract void OnMenuItemClick(int itemIndex);
