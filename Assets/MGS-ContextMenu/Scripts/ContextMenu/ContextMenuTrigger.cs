@@ -57,8 +57,7 @@ namespace Developer.ContextMenu
         {
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
                 CloseCurrentMenu();
-
-            if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(1))
             {
                 CloseCurrentMenu();
 
