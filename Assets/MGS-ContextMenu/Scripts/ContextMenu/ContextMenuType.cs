@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace Developer.ContextMenu
+namespace Mogoson.ContextMenu
 {
     /// <summary>
     /// Type of context menu.

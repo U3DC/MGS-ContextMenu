@@ -12,9 +12,8 @@
 
 using UnityEngine;
 
-namespace Developer.ContextMenu
+namespace Mogoson.ContextMenu
 {
-    [AddComponentMenu("Developer/ContextMenu/ContextMenuAgentExample")]
     public class ContextMenuAgentExample : ContextMenuAgent
     {
         #region Field and Property

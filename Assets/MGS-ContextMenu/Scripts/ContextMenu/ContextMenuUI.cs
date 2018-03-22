@@ -17,10 +17,13 @@
 
 using UnityEngine;
 
-namespace Developer.ContextMenu
+namespace Mogoson.ContextMenu
 {
+    /// <summary>
+    /// Control context menu UI(UGUI).
+    /// </summary>
     [RequireComponent(typeof(RectTransform))]
-    [AddComponentMenu("Developer/ContextMenu/ContextMenuUI")]
+    [AddComponentMenu("Mogoson/ContextMenu/ContextMenuUI")]
     public class ContextMenuUI : MonoBehaviour
     {
         #region Field and Property

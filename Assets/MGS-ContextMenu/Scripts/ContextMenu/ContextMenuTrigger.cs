@@ -14,10 +14,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Developer.ContextMenu
+namespace Mogoson.ContextMenu
 {
+    /// <summary>
+    /// Trigger of context menu.
+    /// </summary>
     [RequireComponent(typeof(Camera))]
-    [AddComponentMenu("Developer/ContextMenu/ContextMenuTrigger")]
+    [AddComponentMenu("Mogoson/ContextMenu/ContextMenuTrigger")]
     public class ContextMenuTrigger : MonoBehaviour
     {
         #region Field and Property

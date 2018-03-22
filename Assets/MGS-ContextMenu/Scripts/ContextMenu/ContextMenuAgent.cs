@@ -12,8 +12,11 @@
 
 using UnityEngine;
 
-namespace Developer.ContextMenu
+namespace Mogoson.ContextMenu
 {
+    /// <summary>
+    /// Agent for context menu.
+    /// </summary>
     [RequireComponent(typeof(Collider))]
     public abstract class ContextMenuAgent : MonoBehaviour
     {
