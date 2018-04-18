@@ -2,7 +2,7 @@
  *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  ContextMenuUI.cs
- *  Description  :  Control context menu UI(UGUI).
+ *  Description  :  Context menu UI(UGUI).
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
@@ -20,7 +20,7 @@ using UnityEngine;
 namespace Mogoson.ContextMenu
 {
     /// <summary>
-    /// Control context menu UI(UGUI).
+    /// Context menu UI(UGUI).
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     [AddComponentMenu("Mogoson/ContextMenu/ContextMenuUI")]
