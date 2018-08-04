@@ -1,7 +1,7 @@
-==========================================================================
+﻿==========================================================================
   Copyright © 2017-2018 Mogoson. All rights reserved.
   Name: MGS-ContextMenu
-  Author: Mogoson   Version: 0.1.1   Date: 3/12/2018
+  Author: Mogoson   Version: 0.1.2   Date: 8/5/2018
 ==========================================================================
   [Summary]
     Unity plugin for make context menu UI in scene.
@@ -15,32 +15,30 @@
     .Net Framework 3.0 or above.
 --------------------------------------------------------------------------
   [Achieve]
-    ContextMenuType : Type to classify ContextMenu.
-
     ContextMenuUI : Control the context menu UI(UGUI).
 
     ContextMenuTrigger : Trigger of context menu, show context menu
     on mouse right button click on the target gameobject.
 
     ContextMenuAgent : Agent of context menu, achieve the action of
-    context menu item is clicked.
+    context menu when item is clicked.
 
     In fact, this plugin just build a frame of context menu, you need
     write your component script, inherit the ContextMenuAgent class
-    and achieve the OnMenuItemClick method to something that you want
-    and attach it to the target gameobject. just like the
+    and achieve the OnMenuItemClick method to something that you
+    want and attach it to the target gameobject. just like the
     ContextMenuAgentExample component.
 --------------------------------------------------------------------------
   [Usage]
-    Attach the ContextMenuUI to the context menu UI root. you can make
-    multi context menu UI.
+    Attach the ContextMenuUI to the context menu UI root and set the
+    menu name. you can make multi context menu UI in a scene.
 
-    Attach the ContextMenuTrigger to the main camera in your scene and
-    add ContextMenuUI to the Menu List.
+    Attach the ContextMenuTrigger to the main camera in your scene
+    and add ContextMenuUI to the Menu List.
 
     Create your script component, inherit the ContextMenuAgent class
-    and achieve the OnMenuItemClick method to something that you want.
-    just like the ContextMenuAgentExample component.
+    and achieve the OnMenuItemClick method to something that you
+    want. just like the ContextMenuAgentExample component.
 
     Attach your script component to the target gameobject.
 --------------------------------------------------------------------------

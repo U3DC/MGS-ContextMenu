@@ -71,7 +71,7 @@ namespace Mogoson.ContextMenu
                     var menuAgent = hitInfo.transform.GetComponent<ContextMenuAgent>();
                     if (menuAgent)
                     {
-                        currentMenu = FindContextMenu(menuAgent.menuType);
+                        currentMenu = FindContextMenu(menuAgent.menuName);
                         if (currentMenu)
                             currentMenu.Show(menuAgent, Input.mousePosition);
                     }
@@ -94,17 +94,17 @@ namespace Mogoson.ContextMenu
         /// <summary>
         /// Find context menu from menuList by menu type.
         /// </summary>
-        /// <param name="menuType">Type of target context menu.</param>
+        /// <param name="menuName">Name of target context menu.</param>
         /// <returns>Context menu found.</returns>
-        protected ContextMenuUI FindContextMenu(ContextMenuType menuType)
+        protected ContextMenuUI FindContextMenu(string menuName)
         {
             foreach (var menu in menuList)
             {
-                if (menu.type == menuType)
+                if (menu.menuName == menuName)
                     return menu;
             }
 
-            Debug.LogWarningFormat("Find context menu UI is failed : The context menu that type is {0} does not exist.", menuType);
+            Debug.LogWarningFormat("Find context menu UI is failed : The context menu that name is {0} does not exist.", menuName);
             return null;
         }
         #endregion

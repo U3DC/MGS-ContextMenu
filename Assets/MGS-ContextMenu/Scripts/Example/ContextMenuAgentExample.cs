@@ -14,18 +14,22 @@ using UnityEngine;
 
 namespace Mogoson.ContextMenu
 {
+    [AddComponentMenu("Mogoson/ContextMenu/ContextMenuAgentExample")]
     public class ContextMenuAgentExample : ContextMenuAgent
     {
         #region Field and Property
         public Vector3 positionSnap = new Vector3(1, 0, 0);
         public Vector3 rotationSnap = new Vector3(0, 0, 30);
         public Color[] colors = new Color[] { Color.red, Color.blue, Color.green };
+
+        private const string TransformMenu = "TransformMenu";
+        private const string ColorMenu = "ColorMenu";
         #endregion
 
         #region Public Method
         public override void OnMenuItemClick(int itemIndex)
         {
-            if (menuType == ContextMenuType.TransformMenu)
+            if (menuName == TransformMenu)
             {
                 switch (itemIndex)
                 {
@@ -42,12 +46,12 @@ namespace Mogoson.ContextMenu
                         transform.eulerAngles -= rotationSnap;
                         break;
                 }
-                menuType = ContextMenuType.ColorMenu;
+                menuName = ColorMenu;
             }
-            else if (menuType == ContextMenuType.ColorMenu)
+            else if (menuName == ColorMenu)
             {
                 GetComponent<Renderer>().material.color = colors[itemIndex];
-                menuType = ContextMenuType.TransformMenu;
+                menuName = TransformMenu;
             }
         }
         #endregion

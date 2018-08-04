@@ -28,9 +28,9 @@ namespace Mogoson.ContextMenu
     {
         #region Field and Property
         /// <summary>
-        /// Type of context menu.
+        /// Name of context menu.
         /// </summary>
-        public ContextMenuType type = ContextMenuType.Undefined;
+        public string menuName = "Menu Name";
 
         /// <summary>
         /// Agent of context menu.
