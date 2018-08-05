@@ -12,7 +12,6 @@
 - .Net Framework 3.0 或更高版本。
 
 ## 实现
-- ContextMenuType：上下文菜单分类。
 - ContextMenuUI：控制上下文菜单UI。
 - ContextMenuTrigger：上下文菜单触发器，鼠标右键单击物体时触发菜单显示。
 - ContextMenuAgent：上下文菜单代理，实现菜单项被点击时需要执行的操作。

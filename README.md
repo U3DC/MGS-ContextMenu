@@ -13,7 +13,6 @@
 - .Net Framework 3.0 or above.
 
 ## Achieve
-- ContextMenuType : Type to classify ContextMenu.
 - ContextMenuUI : Control the context menu UI(UGUI).
 - ContextMenuTrigger : Trigger of context menu, show context menu on
   mouse right button click on the target
