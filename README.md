@@ -29,9 +29,9 @@
 - Demos in the path "MGS-ContextMenu\Scenes" provide reference to you.
 
 ## Preview
-- ContextMenuExample
+- Context Menu Example
 
-![ContextMenuExample](./Attachments/README_Image/ContextMenuExample.gif)
+![Context Menu Example](./Attachments/README_Image/ContextMenuExample.gif)
 
 ## Contact
-- If you have any questions, feel free to contact me at mogoson@qq.com.
+- If you have any questions, feel free to contact me at mogoson@outlook.com.

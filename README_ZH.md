@@ -24,9 +24,9 @@
 - “MGS-ContextMenu\Scenes”目录下存放上述功能的演示案例，供读者参考。
 
 ## 预览
-- ContextMenuExample
+- Context Menu Example
 
-![ContextMenuExample](./Attachments/README_Image/ContextMenuExample.gif)
+![Context Menu Example](./Attachments/README_Image/ContextMenuExample.gif)
 
 ## 联系
-- 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
+- 如果你有任何问题或者建议，欢迎通过mogoson@outlook.com联系我。
