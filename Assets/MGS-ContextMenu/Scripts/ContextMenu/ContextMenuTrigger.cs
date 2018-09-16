@@ -19,8 +19,8 @@ namespace Mogoson.ContextMenu
     /// <summary>
     /// Trigger of context menu.
     /// </summary>
-    [RequireComponent(typeof(Camera))]
     [AddComponentMenu("Mogoson/ContextMenu/ContextMenuTrigger")]
+    [RequireComponent(typeof(Camera))]
     public class ContextMenuTrigger : MonoBehaviour
     {
         #region Field and Property
@@ -42,7 +42,7 @@ namespace Mogoson.ContextMenu
         /// <summary>
         /// Current context menu of trigger.
         /// </summary>
-        protected ContextMenuUI currentMenu;
+        protected IContextMenuUI currentMenu;
 
         /// <summary>
         /// Camera to ray.
@@ -68,11 +68,11 @@ namespace Mogoson.ContextMenu
                 var hitInfo = new RaycastHit();
                 if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
                 {
-                    var menuAgent = hitInfo.transform.GetComponent<ContextMenuAgent>();
-                    if (menuAgent)
+                    var menuAgent = hitInfo.transform.GetComponent<IContextMenuAgent>();
+                    if (menuAgent != null)
                     {
-                        currentMenu = FindContextMenu(menuAgent.menuName);
-                        if (currentMenu)
+                        currentMenu = FindContextMenu(menuAgent.MenuName);
+                        if (currentMenu != null)
                             currentMenu.Show(menuAgent, Input.mousePosition);
                     }
                 }
@@ -84,7 +84,7 @@ namespace Mogoson.ContextMenu
         /// </summary>
         protected void CloseCurrentMenu()
         {
-            if (currentMenu)
+            if (currentMenu != null)
             {
                 currentMenu.Close();
                 currentMenu = null;
@@ -96,11 +96,11 @@ namespace Mogoson.ContextMenu
         /// </summary>
         /// <param name="menuName">Name of target context menu.</param>
         /// <returns>Context menu found.</returns>
-        protected ContextMenuUI FindContextMenu(string menuName)
+        protected IContextMenuUI FindContextMenu(string menuName)
         {
             foreach (var menu in menuList)
             {
-                if (menu.menuName == menuName)
+                if (menu.MenuName == menuName)
                     return menu;
             }
 

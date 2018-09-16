@@ -15,6 +15,7 @@
  *  Description  :  Protected agent.
  *************************************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mogoson.ContextMenu
@@ -22,31 +23,92 @@ namespace Mogoson.ContextMenu
     /// <summary>
     /// Context menu UI(UGUI).
     /// </summary>
-    [RequireComponent(typeof(RectTransform))]
     [AddComponentMenu("Mogoson/ContextMenu/ContextMenuUI")]
-    public class ContextMenuUI : MonoBehaviour
+    [RequireComponent(typeof(RectTransform))]
+    public class ContextMenuUI : MonoBehaviour, IContextMenuUI
     {
         #region Field and Property
         /// <summary>
         /// Name of context menu.
         /// </summary>
-        public string menuName = "Menu Name";
+        [SerializeField]
+        protected string menuName = "Menu Name";
 
         /// <summary>
         /// Agent of context menu.
         /// </summary>
-        protected ContextMenuAgent agent;
+        protected IContextMenuAgent agent;
 
         /// <summary>
         /// Root RectTransform of context menu.
         /// </summary>
         protected RectTransform rootRect;
+
+        /// <summary>
+        /// Dictionary of context menu items.
+        /// </summary>
+        protected Dictionary<string, IContextMenuItem> itemDic = new Dictionary<string, IContextMenuItem>();
+
+        /// <summary>
+        /// Name of context menu.
+        /// </summary>
+        public string MenuName
+        {
+            set { menuName = value; }
+            get { return menuName; }
+        }
         #endregion
 
         #region Protected Method
         protected virtual void Awake()
         {
             rootRect = GetComponent<RectTransform>();
+            var items = GetComponentsInChildren<IContextMenuItem>(true);
+            foreach (var item in items)
+            {
+                var itemName = item.ItemName;
+                item.AddListener(() =>
+                {
+                    MenuItemClick(itemName);
+                });
+                itemDic.Add(item.ItemName, item);
+            }
+        }
+
+        /// <summary>
+        /// Menu item click.
+        /// </summary>
+        /// <param name="itemName">Name of menu item.</param>
+        protected virtual void MenuItemClick(string itemName)
+        {
+            agent.OnMenuItemClick(itemName);
+            Close();
+        }
+
+        /// <summary>
+        /// Enable all children items.
+        /// </summary>
+        protected virtual void EnableAllItems()
+        {
+            foreach (var item in itemDic.Values)
+            {
+                item.Interactable = true;
+            }
+        }
+
+        /// <summary>
+        /// Disable children items by items name.
+        /// </summary>
+        /// <param name="itemNames">Names of menu items to disable.</param>
+        protected virtual void DisableItems(IEnumerable<string> itemNames)
+        {
+            foreach (var itemName in itemNames)
+            {
+                if (itemDic.ContainsKey(itemName))
+                {
+                    itemDic[itemName].Interactable = false;
+                }
+            }
         }
 
         /// <summary>
@@ -70,21 +132,12 @@ namespace Mogoson.ContextMenu
         /// </summary>
         /// <param name="agent">Agent of menu.</param>
         /// <param name="mousePosition">Screen position of mouse pointer.</param>
-        public virtual void Show(ContextMenuAgent agent, Vector2 mousePosition)
+        public void Show(IContextMenuAgent agent, Vector2 mousePosition)
         {
             this.agent = agent;
+            DisableItems(agent.DisableItems);
             gameObject.SetActive(true);
             transform.position = GetMenuUIPosition(mousePosition);
-        }
-
-        /// <summary>
-        /// Menu item click.
-        /// </summary>
-        /// <param name="itemIndex">Index of menu item.</param>
-        public virtual void MenuItemClick(int itemIndex)
-        {
-            agent.OnMenuItemClick(itemIndex);
-            Close();
         }
 
         /// <summary>
@@ -93,6 +146,7 @@ namespace Mogoson.ContextMenu
         public virtual void Close()
         {
             gameObject.SetActive(false);
+            EnableAllItems();
         }
         #endregion
     }

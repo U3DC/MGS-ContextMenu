@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mogoson.ContextMenu
@@ -18,21 +19,36 @@ namespace Mogoson.ContextMenu
     /// Agent for context menu.
     /// </summary>
     [RequireComponent(typeof(Collider))]
-    public abstract class ContextMenuAgent : MonoBehaviour
+    public abstract class ContextMenuAgent : MonoBehaviour, IContextMenuAgent
     {
         #region Field and Property
         /// <summary>
         /// Name of target context menu.
         /// </summary>
-        public string menuName = "Menu Name";
+        [SerializeField]
+        protected string menuName = "Menu Name";
+
+        /// <summary>
+        /// Name of target context menu.
+        /// </summary>
+        public string MenuName
+        {
+            set { menuName = value; }
+            get { return menuName; }
+        }
+
+        /// <summary>
+        /// Disable items of show target context menu.
+        /// </summary>
+        public abstract IEnumerable<string> DisableItems { get; }
         #endregion
 
         #region Public Method
         /// <summary>
         /// Event on context menu item click.
         /// </summary>
-        /// <param name="itemIndex">Index of menu item.</param>
-        public abstract void OnMenuItemClick(int itemIndex);
+        /// <param name="itemName">Name of menu item.</param>
+        public abstract void OnMenuItemClick(string itemName);
         #endregion
     }
 }

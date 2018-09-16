@@ -10,10 +10,30 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mogoson.ContextMenu
 {
+    public static class TransformMenu
+    {
+        public const string Name = "TransformMenu";
+
+        public const string PositionI = "Position+";
+        public const string PositionD = "Position-";
+        public const string RotationI = "Rotation+";
+        public const string RotationD = "Rotation-";
+    }
+
+    public static class ColorMenu
+    {
+        public const string Name = "ColorMenu";
+
+        public const string ColorA = "ColorA";
+        public const string ColorB = "ColorB";
+        public const string ColorC = "ColorC";
+    }
+
     [AddComponentMenu("Mogoson/ContextMenu/ContextMenuAgentExample")]
     public class ContextMenuAgentExample : ContextMenuAgent
     {
@@ -22,36 +42,72 @@ namespace Mogoson.ContextMenu
         public Vector3 rotationSnap = new Vector3(0, 0, 30);
         public Color[] colors = new Color[] { Color.red, Color.blue, Color.green };
 
-        private const string TransformMenu = "TransformMenu";
-        private const string ColorMenu = "ColorMenu";
+        public override IEnumerable<string> DisableItems
+        {
+            get
+            {
+                disableItems.Clear();
+                if (menuName == TransformMenu.Name)
+                {
+                    if (transform.localPosition.x <= -3)
+                    {
+                        disableItems.Add(TransformMenu.PositionD);
+                    }
+                    else if (transform.localPosition.x >= 3)
+                    {
+                        disableItems.Add(TransformMenu.PositionI);
+                    }
+                }
+                return disableItems;
+            }
+        }
+        private List<string> disableItems = new List<string>();
         #endregion
 
         #region Public Method
-        public override void OnMenuItemClick(int itemIndex)
+        public override void OnMenuItemClick(string itemName)
         {
-            if (menuName == TransformMenu)
+            if (menuName == TransformMenu.Name)
             {
-                switch (itemIndex)
+                switch (itemName)
                 {
-                    case 0:
-                        transform.position += positionSnap;
+                    case TransformMenu.PositionI:
+                        transform.localPosition += positionSnap;
                         break;
-                    case 1:
-                        transform.position -= positionSnap;
+
+                    case TransformMenu.PositionD:
+                        transform.localPosition -= positionSnap;
                         break;
-                    case 2:
-                        transform.eulerAngles += rotationSnap;
+
+                    case TransformMenu.RotationI:
+                        transform.localEulerAngles += rotationSnap;
                         break;
-                    case 3:
-                        transform.eulerAngles -= rotationSnap;
+
+                    case TransformMenu.RotationD:
+                        transform.localEulerAngles -= rotationSnap;
                         break;
                 }
-                menuName = ColorMenu;
+                menuName = ColorMenu.Name;
             }
-            else if (menuName == ColorMenu)
+            else if (menuName == ColorMenu.Name)
             {
-                GetComponent<Renderer>().material.color = colors[itemIndex];
-                menuName = TransformMenu;
+                var index = 0;
+                switch (itemName)
+                {
+                    case ColorMenu.ColorA:
+                        index = 0;
+                        break;
+
+                    case ColorMenu.ColorB:
+                        index = 1;
+                        break;
+
+                    case ColorMenu.ColorC:
+                        index = 2;
+                        break;
+                }
+                GetComponent<Renderer>().material.color = colors[index];
+                menuName = TransformMenu.Name;
             }
         }
         #endregion
