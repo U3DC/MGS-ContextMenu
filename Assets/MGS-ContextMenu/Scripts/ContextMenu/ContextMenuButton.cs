@@ -1,45 +1,50 @@
 /*************************************************************************
  *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  ContextMenuItem.cs
- *  Description  :  Define context menu item.
+ *  File         :  ContextMenuButton.cs
+ *  Description  :  Define button item of context menu.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  9/16/2018
+ *  Date         :  9/17/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Mogoson.ContextMenu
 {
     /// <summary>
-    /// Item of context menu.
+    /// Button item of context menu.
     /// </summary>
-    public abstract class ContextMenuItem : MonoBehaviour, IContextMenuItem
+    [AddComponentMenu("Mogoson/ContextMenu/ContextMenuButton")]
+    [RequireComponent(typeof(Button))]
+    public class ContextMenuButton : ContextMenuItem
     {
         #region Field and Property
         /// <summary>
-        /// Name of menu item.
+        /// Button of menu item.
         /// </summary>
         [SerializeField]
-        protected string itemName = "Item Name";
-
-        /// <summary>
-        /// Name of menu item.
-        /// </summary>
-        public string ItemName
-        {
-            set { itemName = value; }
-            get { return itemName; }
-        }
+        protected Button button;
 
         /// <summary>
         /// Interactable of menu item.
         /// </summary>
-        public abstract bool Interactable { set; get; }
+        public override bool Interactable
+        {
+            set { button.interactable = value; }
+            get { return button.interactable; }
+        }
+        #endregion
+
+        #region Protected Method
+        protected virtual void Reset()
+        {
+            button = GetComponent<Button>();
+        }
         #endregion
 
         #region Public Method
@@ -47,13 +52,19 @@ namespace Mogoson.ContextMenu
         /// Add listener to menu item.
         /// </summary>
         /// <param name="callback">Callback function.</param>
-        public abstract void AddListener(UnityAction callback);
+        public override void AddListener(UnityAction callback)
+        {
+            button.onClick.AddListener(callback);
+        }
 
         /// <summary>
         /// Remove listener from menu item.
         /// </summary>
         /// <param name="callback">Callback function.</param>
-        public abstract void RemoveListener(UnityAction callback);
+        public override void RemoveListener(UnityAction callback)
+        {
+            button.onClick.RemoveListener(callback);
+        }
         #endregion
     }
 }
