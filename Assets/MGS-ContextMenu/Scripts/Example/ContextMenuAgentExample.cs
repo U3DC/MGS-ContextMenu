@@ -15,25 +15,6 @@ using UnityEngine;
 
 namespace Mogoson.ContextMenu
 {
-    public static class TransformMenu
-    {
-        public const string Name = "TransformMenu";
-
-        public const string PositionI = "Position+";
-        public const string PositionD = "Position-";
-        public const string RotationI = "Rotation+";
-        public const string RotationD = "Rotation-";
-    }
-
-    public static class ColorMenu
-    {
-        public const string Name = "ColorMenu";
-
-        public const string ColorA = "ColorA";
-        public const string ColorB = "ColorB";
-        public const string ColorC = "ColorC";
-    }
-
     [AddComponentMenu("Mogoson/ContextMenu/ContextMenuAgentExample")]
     public class ContextMenuAgentExample : ContextMenuAgent
     {
