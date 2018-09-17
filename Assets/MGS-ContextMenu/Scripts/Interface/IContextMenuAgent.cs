@@ -31,7 +31,7 @@ namespace Mogoson.ContextMenu
         IEnumerable<string> DisableItems { get; }
         #endregion
 
-        #region Public Method
+        #region Method
         /// <summary>
         /// Event on context menu item click.
         /// </summary>

@@ -21,39 +21,60 @@ namespace Mogoson.ContextMenu
     /// </summary>
     [AddComponentMenu("Mogoson/ContextMenu/ContextMenuTrigger")]
     [RequireComponent(typeof(Camera))]
-    public class ContextMenuTrigger : MonoBehaviour
+    public class ContextMenuTrigger : MonoBehaviour, IContextMenuTrigger
     {
         #region Field and Property
         /// <summary>
         /// Layer of ray.
         /// </summary>
-        public LayerMask layerMask = 1;
+        [SerializeField]
+        protected LayerMask layerMask = 1;
 
         /// <summary>
         /// Max distance of ray.
         /// </summary>
-        public float maxDistance = 100;
+        [SerializeField]
+        protected float maxDistance = 100;
 
         /// <summary>
         /// List of context menu.
         /// </summary>
-        public List<ContextMenuUI> menuList = new List<ContextMenuUI>();
+        [SerializeField]
+        protected List<ContextMenuUI> menuList = new List<ContextMenuUI>();
 
         /// <summary>
         /// Current context menu of trigger.
         /// </summary>
-        protected IContextMenuUI currentMenu;
+        public IContextMenuUI CurrentMenu { protected set; get; }
 
         /// <summary>
         /// Camera to ray.
         /// </summary>
-        protected Camera rayCamera;
+        public Camera RayCamera { protected set; get; }
+
+        /// <summary>
+        /// Layer of ray.
+        /// </summary>
+        public LayerMask LayerMask
+        {
+            set { layerMask = value; }
+            get { return layerMask; }
+        }
+
+        /// <summary>
+        /// Max distance of ray.
+        /// </summary>
+        public float MaxDistance
+        {
+            set { maxDistance = value; }
+            get { return maxDistance; }
+        }
         #endregion
 
         #region Protected Method
         protected virtual void Start()
         {
-            rayCamera = GetComponent<Camera>();
+            RayCamera = GetComponent<Camera>();
         }
 
         protected virtual void Update()
@@ -64,16 +85,16 @@ namespace Mogoson.ContextMenu
             {
                 CloseCurrentMenu();
 
-                var ray = rayCamera.ScreenPointToRay(Input.mousePosition);
+                var ray = RayCamera.ScreenPointToRay(Input.mousePosition);
                 var hitInfo = new RaycastHit();
                 if (Physics.Raycast(ray, out hitInfo, maxDistance, layerMask))
                 {
                     var menuAgent = hitInfo.transform.GetComponent<IContextMenuAgent>();
                     if (menuAgent != null)
                     {
-                        currentMenu = FindContextMenu(menuAgent.MenuName);
-                        if (currentMenu != null)
-                            currentMenu.Show(menuAgent, Input.mousePosition);
+                        CurrentMenu = FindContextMenu(menuAgent.MenuName);
+                        if (CurrentMenu != null)
+                            CurrentMenu.Show(menuAgent, Input.mousePosition);
                     }
                 }
             }
@@ -84,10 +105,10 @@ namespace Mogoson.ContextMenu
         /// </summary>
         protected void CloseCurrentMenu()
         {
-            if (currentMenu != null)
+            if (CurrentMenu != null)
             {
-                currentMenu.Close();
-                currentMenu = null;
+                CurrentMenu.Close();
+                CurrentMenu = null;
             }
         }
 
@@ -106,6 +127,37 @@ namespace Mogoson.ContextMenu
 
             Debug.LogWarningFormat("Find context menu UI is failed : The context menu that name is {0} does not exist.", menuName);
             return null;
+        }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Add menu UI to trigger.
+        /// </summary>
+        /// <param name="menuUI">Context menu ui to add.</param>
+        public void AddMenuUI(ContextMenuUI menuUI)
+        {
+            if (menuUI == null || menuList.Contains(menuUI))
+                return;
+
+            menuList.Add(menuUI);
+        }
+
+        /// <summary>
+        /// Remove menu UI from trigger.
+        /// </summary>
+        /// <param name="menuUI">Context menu ui to remove.</param>
+        public void RemoveMenuUI(ContextMenuUI menuUI)
+        {
+            menuList.Remove(menuUI);
+        }
+
+        /// <summary>
+        /// Clear all menu UI of trigger.
+        /// </summary>
+        public void ClearMenuUI()
+        {
+            menuList.Clear();
         }
         #endregion
     }

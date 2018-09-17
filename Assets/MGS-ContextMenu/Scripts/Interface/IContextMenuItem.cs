@@ -31,7 +31,7 @@ namespace Mogoson.ContextMenu
         bool Interactable { set; get; }
         #endregion
 
-        #region Public Method
+        #region Method
         /// <summary>
         /// Add listener to menu item.
         /// </summary>

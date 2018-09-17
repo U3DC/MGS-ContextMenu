@@ -26,7 +26,7 @@ namespace Mogoson.ContextMenu
         string MenuName { set; get; }
         #endregion
 
-        #region Public Method
+        #region Method
         /// <summary>
         /// Show context menu.
         /// </summary>
