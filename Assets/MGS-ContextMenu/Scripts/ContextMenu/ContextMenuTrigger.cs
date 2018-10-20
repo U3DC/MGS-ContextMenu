@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Mogoson.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -125,7 +126,7 @@ namespace Mogoson.ContextMenu
                     return menu;
             }
 
-            Debug.LogWarningFormat("Find context menu UI is failed : The context menu that name is {0} does not exist.", menuName);
+            LogUtility.LogWarning("Find context menu UI is failed: The context menu that name is {0} does not exist.", menuName);
             return null;
         }
         #endregion
