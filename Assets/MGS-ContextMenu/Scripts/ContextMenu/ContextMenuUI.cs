@@ -67,10 +67,7 @@ namespace Mogoson.ContextMenu
             foreach (var item in items)
             {
                 var itemName = item.ItemName;
-                item.AddListener(() =>
-                {
-                    MenuItemClick(itemName);
-                });
+                item.AddListener(() => MenuItemClick(itemName));
                 itemDic.Add(item.ItemName, item);
             }
         }

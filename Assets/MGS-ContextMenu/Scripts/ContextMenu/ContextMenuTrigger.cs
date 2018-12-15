@@ -81,7 +81,9 @@ namespace Mogoson.ContextMenu
         protected virtual void Update()
         {
             if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+            {
                 CloseCurrentMenu();
+            }
             else if (Input.GetMouseButtonDown(1))
             {
                 CloseCurrentMenu();
@@ -95,7 +97,9 @@ namespace Mogoson.ContextMenu
                     {
                         CurrentMenu = FindContextMenu(menuAgent.MenuName);
                         if (CurrentMenu != null)
+                        {
                             CurrentMenu.Show(menuAgent, Input.mousePosition);
+                        }
                     }
                 }
             }
@@ -123,7 +127,9 @@ namespace Mogoson.ContextMenu
             foreach (var menu in menuList)
             {
                 if (menu.MenuName == menuName)
+                {
                     return menu;
+                }
             }
 
             LogUtility.LogWarning("Find context menu UI is failed: The context menu that name is {0} does not exist.", menuName);
@@ -139,8 +145,9 @@ namespace Mogoson.ContextMenu
         public void AddMenuUI(ContextMenuUI menuUI)
         {
             if (menuUI == null || menuList.Contains(menuUI))
+            {
                 return;
-
+            }
             menuList.Add(menuUI);
         }
 
